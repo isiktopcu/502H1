@@ -1,0 +1,88 @@
+class Portfolio():
+
+    def __init__(self,balance=0.0):
+        self.balance = 0.0
+        self.mfdict = {}
+        self.stdict = {}
+
+        
+    def addCash(self,amount):
+        self.balance = self.balance + amount
+        print("Your balance is now: ", self.balance)
+   
+    def withdrawCash(self,amount):
+        if self.balance <= amount:
+            print("Unsufficent balance!") 
+            return 
+        self.balance = self.balance - self.amount 
+        
+    
+    def buyStock(self,shares,stock_o):
+        self.balance = self.balance - stock_o.stprice * shares
+        if stock_o.stname in self.stdict:
+            self.stdict[stock_o.stname] = self.stdict[stock_o.stname] + shares 
+        else:
+            self.stdict[stock_o.stname] = shares 
+   
+    
+    def buyMutualFund(self,shares,mf_o):
+        self.balance = self.balance - mf_o.mfprice * shares 
+        if mf_o.mfname in self.mfdict:
+            self.mfdict[mf_o.mfname] = self.mfdict[mf_o.mfname] + shares
+        else:
+            self.mfdict[mf_o.mfname] = shares 
+   
+    
+    def sellStockStock(self,shares,stock_o):
+        self.balance = self.balance - stock_o.stprice * shares
+        if stock_o.stname in self.stdict:
+            self.stdict[stock_o.stname] += shares 
+        else:
+            self.stdict[stock_o.stname] = shares 
+    
+   
+    def sellMutualFund(self,shares,mf_o):
+       self.balance =self.balance - mf_o.mfprice * shares 
+       if mf_o.mfname in self.mfdict:
+            self.mfdict[mf_o.mfname] += shares
+       else:
+            self.mfdict[mf_o.mfname] = shares 
+
+        
+class Stock:
+    
+    def __init__(self,stprice,stname):
+        self.stprice = stprice
+        self.stname = stname
+        self.stdict[stname] = stprice 
+    
+    def stocksSellPrice(self):
+        return random.uniform(0.5 * self.stprice, 1.5 * self.stprice)
+        
+    
+class MutualFund:
+    
+    def __init__(self,mfname,mfprice):
+        self.mfname = mfname
+        self.mfprice = mfprice
+    
+    
+    def mfSellPrice(self):
+        return random.uniform(0.9 * self.mfprice, 1.2 * self.mfprice)
+        
+
+if __name__ == '__main__':
+  
+    portfolio=Portfolio()
+    s = Stock(5, s)
+    portfolio.buyStock(5, s)
+    mf1 = MutualFund("BRT")
+    mf2 = MutualFund("GHT")
+    portfolio.buyMutualFund(10.3, mf1)
+    portfolio.buyMutualFund(2, mf2)
+    print(portfolio)
+    portfolio.sellMutualFund("BRT", 3)
+    portfolio.sellStock("HFH", 1)
+    portfolio.history()
+    
+ 
